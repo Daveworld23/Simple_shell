@@ -12,8 +12,9 @@
 extern char **environ;
 #define BUFF_SIZE 1024;
 #define MAX_COMMAND 10;
+#define MAX_INPUT_SIZE 1024;
 
-int prompt(void);
+void prompt(void);
 void get_input(char *buff);
 void execute(char *av[], char **env);
 int main(int ac, char **av, char **env);
