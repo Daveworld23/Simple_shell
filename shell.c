@@ -23,7 +23,7 @@ int main(void)/**char **av, char **env)*/
 		prompt();
 		get_input(input);
 		string = strtok(input, delim);
-		while (string != NULL && arg_count < MAX_ARGS)
+		if (string != NULL && arg_count < MAX_ARGS)
 		{
 			args[arg_count++] = string;
 			string = strtok(NULL, delim);

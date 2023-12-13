@@ -12,6 +12,7 @@
 extern char **environ;
 #define MAX_INPUT_SIZE 1024
 #define MAX_ARGS 1024
+#define BUFF_SIZE 1024
 
 void prompt(void);
 void get_input(char *buff);

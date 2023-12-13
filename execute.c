@@ -22,7 +22,7 @@ void execute(char **av)
 		if (execve(cmdpath, av, environ) == -1)
 		{
 			perror("Execution failed");
-			free(av);
+			/**free(av);*/
 			exit(EXIT_FAILURE);
 		}
 	}

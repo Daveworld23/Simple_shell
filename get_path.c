@@ -1,40 +1,32 @@
 #include "shell.h"
 
 /**
- * get_path - checks path of command
+ * get_path - gets path of command
+ * @command: the input command
  */
 char *get_path(char *command)
 {
 	char *path = getenv("PATH");
+	char *path_cpy = strdup(path);
 	char *delim = ":";
-	size_t path_len, command_len;
-	char *token = strtok(path, delim);
-	char *full_path = NULL;
+	char buff[BUFF_SIZE];
+	char *token = strtok(path_cpy, delim);
 
-	if (path == NULL || command == NULL)
-		return (NULL);
-	/** *token = strtok(path, delim);**/
 	while (token != NULL)
 	{
-		path_len = strlen(token);
-		command_len = strlen(command);
-		full_path = (char *)malloc(path_len + command_len + 2);
-		if (full_path == NULL)
+		strcpy(buff, token);
+		if (buff[strlen(buff) - 1] != '/')
 		{
-			return (NULL);
+			strcat(buff, "/");
 		}
-		strcpy(full_path, token);
-		if (full_path[path_len - 1] != '/')
+		strcat(buff, command);
+		if (access(buff, F_OK | X_OK) == 0)
 		{
-			strcat(full_path, "/");
+			free(path_cpy);
+			return (strdup(buff));
 		}
-		strcat(full_path, command);
-		if (access(full_path, F_OK | X_OK) == 0)
-		{
-			return (full_path);
-		}
-		free(full_path);
-		token = strtok(NULL, ":");
+		token = strtok(NULL, delim);
 	}
+	free(path_cpy);
 	return (NULL);
 }
