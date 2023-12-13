@@ -25,7 +25,6 @@ void get_input(char *buff)
 		else
 		{
 			perror("ERROR IN INPUT");
-			free(buff);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -33,5 +32,4 @@ void get_input(char *buff)
 	{
 		buff[s - 1] = '\0';
 	}
-	free(buff);
 }

@@ -8,7 +8,7 @@
  */
 int main(void)/**char **av, char **env)*/
 {
-	char *input[MAX_INPUT_SIZE];
+	char input[MAX_INPUT_SIZE];
 	char *delim = " \n\t";
 	char *string = NULL;
 	char *args[MAX_ARGS];
@@ -37,7 +37,7 @@ int main(void)/**char **av, char **env)*/
 			builtin_env();
 		else
 		{
-			execute(args[0], environ);
+			execute(args, environ);
 		}
 	}
 	return (0);
