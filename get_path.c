@@ -8,17 +8,17 @@ char *get_path(char *command)
 	char *path = getenv("PATH");
 	char *delim = ":";
 	size_t path_len, command_len;
-	char *token;
-	char *full_path;
+	char *token = strtok(path, delim);
+	char *full_path = NULL;
 
 	if (path == NULL || command == NULL)
 		return (NULL);
-	*token = strtok(path, delim);
+	/** *token = strtok(path, delim);**/
 	while (token != NULL)
 	{
 		path_len = strlen(token);
 		command_len = strlen(command);
-		*full_path = (char *)malloc(path_len + command_len + 2);
+		full_path = (char *)malloc(path_len + command_len + 2);
 		if (full_path == NULL)
 		{
 			return (NULL);

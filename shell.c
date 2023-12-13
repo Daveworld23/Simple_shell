@@ -6,8 +6,9 @@
  * main - entry point of the shell
  * Return: 0 success, -1 failure
  */
-int main(char *input)/**char **av, char **env)*/
+int main(void)/**char **av, char **env)*/
 {
+	char *input[MAX_INPUT_SIZE];
 	char *delim = " \n\t";
 	char *string = NULL;
 	char *args[MAX_ARGS];
@@ -28,15 +29,15 @@ int main(char *input)/**char **av, char **env)*/
 			string = strtok(NULL, delim);
 		}
 		args[arg_count] = NULL;
-		if (strcmp(args[arg_count], "cd") == 0)
-			builtin_cd(args[arg_count]);
-		else if (strcmp(args[arg_count], "exit") == 0)
-			builtin_exit(args[arg_count]);
-		else if (strcmp(args[arg_count], "env") == 0)
-			builtin_env;
+		if (strcmp(args[0], "cd") == 0)
+			builtin_cd(args[1]);
+		else if (strcmp(args[0], "exit") == 0)
+			builtin_exit(args[1]);
+		else if (strcmp(args[0], "env") == 0)
+			builtin_env();
 		else
 		{
-			execute(args[arg_count], env);
+			execute(args[0], environ);
 		}
 	}
 	return (0);
