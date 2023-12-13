@@ -16,7 +16,7 @@ extern char **environ;
 void prompt(void);
 void get_input(char *buff);
 char *get_path(char *command);
-void execute(char **av, char **env);
+void execute(char **av);
 int main(void);/**int ac, char **av, char **env);*/
 void builtin_exit(char *arg);
 void builtin_cd(char *arg);

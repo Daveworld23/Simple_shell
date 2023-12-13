@@ -3,7 +3,7 @@
 /**
  * execute - executes the program
  */
-void execute(char **av, char **env)
+void execute(char **av)
 {
 	pid_t ch_pid;
 	int status;
@@ -18,8 +18,8 @@ void execute(char **av, char **env)
 	else if (ch_pid == 0)
 	{
 		cmdpath = get_path(av[0]);
-		env = environ;
-		if (execve(cmdpath, av, env) == -1)
+		/** env = environ;*/
+		if (execve(cmdpath, av, environ) == -1)
 		{
 			perror("Execution failed");
 			free(av);

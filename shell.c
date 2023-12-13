@@ -37,7 +37,7 @@ int main(void)/**char **av, char **env)*/
 			builtin_env();
 		else
 		{
-			execute(args, environ);
+			execute(args);
 		}
 	}
 	return (0);

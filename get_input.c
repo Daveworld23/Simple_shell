@@ -12,6 +12,9 @@ void prompt(void)
 	fflush(stdout);
 }
 
+/**
+ * get_input - gets inputs
+ */
 void get_input(char *buff)
 {
 	size_t n = 0;
