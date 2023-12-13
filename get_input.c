@@ -9,6 +9,7 @@ void prompt(void)
 	char prompt[] = "shell$ ";
 
 	write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
+	fflush(stdout);
 }
 
 void get_input(char *buff)
@@ -19,11 +20,18 @@ void get_input(char *buff)
 	s = getline(&buff, &n, stdin);
 	if (s == -1)
 	{
-		perror("ERROR IN INPUT");
-		exit(EXIT_FAILURE);
+		if (feof(stdin))
+			exit(EXIT_SUCCESS);
+		else
+		{
+			perror("ERROR IN INPUT");
+			free(buff);
+			exit(EXIT_FAILURE);
+		}
 	}
 	else if (s > 1 && buff[s - 1] == '\n')
 	{
 		buff[s - 1] = '\0';
 	}
+	free(buff);
 }

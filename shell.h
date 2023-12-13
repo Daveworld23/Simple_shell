@@ -10,13 +10,16 @@
 #include <sys/stat.h>
 
 extern char **environ;
-#define BUFF_SIZE 1024;
-#define MAX_COMMAND 10;
-#define MAX_INPUT_SIZE 1024;
+#define BUFF_SIZE 1024
+#define MAX_ARGS 1024
 
 void prompt(void);
 void get_input(char *buff);
-void execute(char *av[], char **env);
-int main(int ac, char **av, char **env);
+char *get_path(char *command);
+void execute(char **av, char **env);
+int main(char *input);/**int ac, char **av, char **env);*/
+void builtin_exit(char *arg);
+void builtin_cd(char *arg);
+void builtin_env(void);
 
 #endif /* SHELL_H */

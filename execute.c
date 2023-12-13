@@ -3,10 +3,11 @@
 /**
  * execute - executes the program
  */
-void execute(char *av[], char **env)
+void execute(char **av, char **env)
 {
 	pid_t ch_pid;
 	int status;
+	char *cmdpath;
 
 	ch_pid = fork();
 	if (ch_pid == -1)
@@ -14,11 +15,14 @@ void execute(char *av[], char **env)
 		perror("fork failed");
 		exit(EXIT_FAILURE);
 	}
-	if (ch_pid == 0)
+	else if (ch_pid == 0)
 	{
-		if (execve(av[0], av, env) == -1)
+		cmdpath = get_path(av[0]);
+		env = environ;
+		if (execve(cmdpath, av, env) == -1)
 		{
-			perror("Execution fauled");
+			perror("Execution failed");
+			free(av);
 			exit(EXIT_FAILURE);
 		}
 	}
