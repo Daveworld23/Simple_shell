@@ -9,17 +9,18 @@ void prompt(void)
 	char prompt[] = "shell$ ";
 
 	write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
-	fflush(stdout);
 }
 
 /**
  * get_input - gets inputs
  */
-void get_input(char *buff)
+void get_input(void)
 {
+	char *buff;
 	size_t n = 0;
 	ssize_t s;
 
+	buff = malloc(sizeof(char) * n);
 	s = getline(&buff, &n, stdin);
 	if (s == -1)
 	{
@@ -31,7 +32,7 @@ void get_input(char *buff)
 			exit(EXIT_FAILURE);
 		}
 	}
-	else if (s >= 1 && buff[s - 1] == '\n')
+	else if (s > 1 && buff[s - 1] == '\n')
 	{
 		buff[s - 1] = '\0';
 	}

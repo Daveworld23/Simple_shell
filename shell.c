@@ -6,7 +6,7 @@
  */
 int main(void)/**char **av, char **env)*/
 {
-	char *input = NULL;/**[MAX_INPUT_SIZE];**/
+	char input[MAX_INPUT_SIZE];
 	char *delim = " \n\t";
 	char *string = NULL;
 	char *args[MAX_ARGS];
@@ -15,7 +15,7 @@ int main(void)/**char **av, char **env)*/
 	while (1)
 	{
 		prompt();
-		get_input(input);
+		get_input();
 		string = strtok(input, delim);
 		arg_count = 0;
 		while (string != NULL && arg_count < MAX_ARGS - 1)

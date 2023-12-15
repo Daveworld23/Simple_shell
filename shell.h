@@ -15,7 +15,7 @@ extern char **environ;
 #define BUFF_SIZE 1024
 
 void prompt(void);
-void get_input(char *buff);
+void get_input(void);
 char *get_path(char *command);
 void execute(char **av);
 int main(void);/**int ac, char **av, char **env);*/

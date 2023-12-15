@@ -7,7 +7,7 @@ void execute(char **av)
 {
 	pid_t ch_pid;
 	int status;
-	char *cmdpath;
+	/**char *cmdpath;**/
 
 	ch_pid = fork();
 	if (ch_pid == -1)
@@ -17,12 +17,12 @@ void execute(char **av)
 	}
 	else if (ch_pid == 0)
 	{
-		cmdpath = get_path(av[0]);
+		/**cmdpath = get_path(av[0]);**/
 		/** env = environ;*/
-		if (execve(cmdpath, av, environ) == -1)
+		if (execve(av[0], av, environ) == -1)
 		{
 			perror("Execution failed");
-			free(cmdpath);
+			/**free(cmdpath);**/
 			exit(EXIT_FAILURE);
 		}
 	}
