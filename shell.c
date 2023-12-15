@@ -18,7 +18,7 @@ int main(void)/**char **av, char **env)*/
 		get_input();
 		string = strtok(input, delim);
 		arg_count = 0;
-		while (string != NULL && arg_count < MAX_ARGS - 1)
+		while (string != NULL) /**&& arg_count < MAX_ARGS - 1)*/
 		{
 			args[arg_count++] = string;
 			string = strtok(NULL, delim);

@@ -18,13 +18,14 @@ void execute(char **av)
 	else if (ch_pid == 0)
 	{
 		cmdpath = get_path(av[0]);
-		/** env = environ;*/
-		if (execve(cmdpath, av, environ) == -1)
+		/**printf("this is before execve is called, %s\n", cmdpath);*/
+		if (execve(av[0], av, environ) == -1)
 		{
 			perror("Execution failed");
-			/**free(cmdpath);**/
+			/**free(cmdpath);*/
 			exit(EXIT_FAILURE);
 		}
+		/**printf("this is after execbe is called, %s\n", cmdpath);*/
 	}
 	else
 	{
