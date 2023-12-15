@@ -35,10 +35,11 @@ int main(void)/**char **av, char **env)*/
 			builtin_exit(args[1]);
 		else if (strcmp(args[0], "env") == 0)
 			builtin_env();
-		else
+		execute(args);
+		/**else
 		{
 			execute(args);
-		}
+		}*/
 	}
 	return (0);
 }

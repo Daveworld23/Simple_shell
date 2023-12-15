@@ -27,5 +27,7 @@ void execute(char **av)
 		}
 	}
 	else
+	{
 		wait(&status);
+	}
 }

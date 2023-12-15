@@ -31,7 +31,7 @@ void get_input(char *buff)
 			exit(EXIT_FAILURE);
 		}
 	}
-	else if (s > 1 && buff[s - 1] == '\n')
+	else if (s >= 1 && buff[s - 1] == '\n')
 	{
 		buff[s - 1] = '\0';
 	}
